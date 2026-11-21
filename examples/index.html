@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Pop-Up Engine — Example</title>
+  <link rel="stylesheet" href="../dist/marketing-popup.min.css" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .spacer {
+      height: 140vh;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      color: #64748b;
+    }
+    .c-popup__form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .c-popup__input {
+      flex: 1;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Marketing Pop-Up Demo</h1>
+    <p>This page includes two declarative pop-ups: an automatic scroll-triggered promo and a click-triggered offer.</p>
+    <button type="button" class="btn" data-open-spring-offer>Open Offer via Click Trigger</button>
+
+    <div class="spacer">
+      Scroll down past 40% of the page to trigger the scroll pop-up automatically.
+    </div>
+  </main>
+
+  <!-- Pop-Up 1: Scroll-Triggered Promo -->
+  <div
+    class="c-popup"
+    hidden
+    aria-hidden="true"
+    role="dialog"
+    aria-labelledby="popup-title-scroll"
+    data-popup="promo-scroll-2026"
+    data-popup-trigger="scroll"
+    data-popup-scroll="40"
+    data-popup-delay="1000"
+    data-popup-animation="zoom-in"
+    data-popup-frequency="cooldown"
+    data-popup-cooldown-days="7"
+    data-popup-convert-days="30"
+    data-popup-close-backdrop="true"
+    data-popup-close-esc="true"
+    data-popup-lock-scroll="true"
+    data-popup-devices="all"
+  >
+    <div class="c-popup__backdrop" data-popup-close></div>
+    <div class="c-popup__dialog">
+      <button type="button" class="c-popup__close-btn" data-popup-close aria-label="Close dialog">&times;</button>
+      <h2 id="popup-title-scroll" style="margin-top: 0;">Unlock 20% Off Your First Order</h2>
+      <p style="color: #475569;">Join our newsletter for early access to seasonal releases and subscriber-only discounts.</p>
+      <form class="c-popup__form" onsubmit="event.preventDefault();">
+        <input type="email" required placeholder="you@example.com" class="c-popup__input" />
+        <button type="submit" class="btn" data-popup-action>Claim 20% Off</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pop-Up 2: Click-Triggered Offer -->
+  <div
+    class="c-popup"
+    hidden
+    aria-hidden="true"
+    role="dialog"
+    aria-labelledby="popup-title-click"
+    data-popup="promo-click-2026"
+    data-popup-trigger="click"
+    data-popup-trigger-selector="[data-open-spring-offer]"
+    data-popup-animation="fade"
+    data-popup-lock-scroll="true"
+  >
+    <div class="c-popup__backdrop" data-popup-close></div>
+    <div class="c-popup__dialog">
+      <button type="button" class="c-popup__close-btn" data-popup-close aria-label="Close dialog">&times;</button>
+      <h2 id="popup-title-click" style="margin-top: 0;">Spring VIP Bundle</h2>
+      <p style="color: #475569;">Opened explicitly via <code>data-popup-trigger="click"</code>.</p>
+      <button type="button" class="btn" data-popup-action>Redeem Bundle</button>
+    </div>
+  </div>
+
+  <script src="../dist/marketing-popup.min.js" defer></script>
+  <script>
+    document.addEventListener('popup:open', (e) => console.log('Opened:', e.detail));
+    document.addEventListener('popup:close', (e) => console.log('Closed:', e.detail));
+    document.addEventListener('popup:convert', (e) => console.log('Converted:', e.detail));
+  </script>
+</body>
+</html>

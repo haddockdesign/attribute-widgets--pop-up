@@ -1,0 +1,20 @@
+{
+  "name": "marketing-popup-engine",
+  "version": "1.0.0",
+  "description": "Zero-dependency, declarative marketing pop-up engine driven by HTML data-* attributes.",
+  "main": "dist/marketing-popup.min.js",
+  "style": "dist/marketing-popup.min.css",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "popup",
+    "modal",
+    "marketing",
+    "vanilla-js",
+    "data-attributes",
+    "exit-intent"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,120 @@
+/* ==========================================================================
+ * Marketing Pop-Up Engine v1.0.0
+ * Base layout, scroll-lock, and declarative animation styles
+ * ========================================================================== */
+
+html.is-scroll-locked,
+body.is-scroll-locked {
+  overflow: hidden;
+}
+
+[data-popup] {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-popup][hidden] {
+  display: none;
+}
+
+.c-popup__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+}
+
+.c-popup__dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.c-popup__close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.c-popup__close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* --------------------------------------------------------------------------
+ * Animation Mode 1: "fade" (fades the entire pop-up container)
+ * ----------------------------------------------------------------------- */
+[data-popup][data-popup-animation="fade"] {
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+[data-popup][data-popup-animation="fade"] .c-popup__backdrop {
+  opacity: 1;
+}
+
+[data-popup][data-popup-animation="fade"].is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
+ * Animation Mode 2: "zoom-in" (fades backdrop & zooms in .c-popup__dialog)
+ * ----------------------------------------------------------------------- */
+[data-popup][data-popup-animation="zoom-in"] {
+  opacity: 1;
+  visibility: hidden;
+  transition: visibility 0.25s ease;
+}
+
+[data-popup][data-popup-animation="zoom-in"] .c-popup__backdrop {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+[data-popup][data-popup-animation="zoom-in"] .c-popup__dialog {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-popup][data-popup-animation="zoom-in"].is-open {
+  visibility: visible;
+}
+
+[data-popup][data-popup-animation="zoom-in"].is-open .c-popup__backdrop {
+  opacity: 1;
+}
+
+[data-popup][data-popup-animation="zoom-in"].is-open .c-popup__dialog {
+  opacity: 1;
+  transform: scale(1);
+}
