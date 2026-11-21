@@ -31,8 +31,8 @@ marketing-popup/
 
 **Via GitHub + jsDelivr CDN** (after pushing to `your-username/marketing-popup`):
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-username/marketing-popup@v1.0.0/dist/marketing-popup.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/your-username/marketing-popup@v1.0.0/dist/marketing-popup.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/haddockdesign/attribute-widgets--pop-up@latest/dist/marketing-popup.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/haddockdesign/attribute-widgets--pop-up@latest/dist/marketing-popup.min.js" defer></script>
 ```
 
 ### 2. Add Pop-Up HTML Markup
