@@ -1,0 +1,28 @@
+# Environment variables & secrets
+.env
+.env.local
+*.pem
+
+# Dependencies
+node_modules/
+venv/
+vendor/
+
+# Build outputs & compiled files
+dist/
+build/
+*.log
+*.class
+*.o
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE & editor folders
+.vscode/
+.idea/
+*.swp
+
+# Exceptions (use ! to negate a rule above)
+!important.log

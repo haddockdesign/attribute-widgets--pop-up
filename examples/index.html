@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marketing Pop-Up Engine — Example</title>
-  <link rel="stylesheet" href="../dist/marketing-popup.min.css" />
+  <link rel="stylesheet" href="../src/marketing-popup.css" />
   <style>
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -115,7 +115,7 @@
     </div>
   </div>
 
-  <script src="../dist/marketing-popup.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/haddockdesign/attribute-widgets--pop-up@v1.0.0/dist/marketing-popup.min.js" defer></script> 
   <script>
     document.addEventListener('popup:open', (e) => console.log('Opened:', e.detail));
     document.addEventListener('popup:close', (e) => console.log('Closed:', e.detail));
